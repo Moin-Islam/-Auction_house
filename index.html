@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction House</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://kit.fontawesome.com/d72a8d384d.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
+    <script src="app/ImageSlider.js"></script>
+    <script src="app/index.js"></script>
+</head>
+
+<body ng-app="Index" ng-controller="IndexCtrl">
+    <section id="header">
+        <a href="index.html"><img src="assets/logo.png" class="logo" alt=""></a>
+        <div>
+            <ul id="navbar">
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="shop.html">Active Auctions</a></li>
+                <li><a href="blog.html">Auction Histories</a></li>
+                <li><a href="about.html">Create Listing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-gavel fa-shake"></i></a></li>
+                <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
+            </ul>
+        </div>
+        <div id="mobile">
+            <a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <i id="bar" class="fas fa-outdent"></i>
+        </div>
+    </section>
+
+    <section id="hero">
+        <h4>Discover Treasures at Auctions</h4>
+        <h2>Uncover unique items and </h2>
+        <h1>Bid on exciting deals</h1>
+        <p>Join the thrill of the auction experience</p>
+        <button onclick="window.location.href='shop.html'">Explore Auctions</button>
+    </section>
+
+    <section id="feature" class="section-p1">
+        <div class="fe-box">
+            <h3>10K +</h3>
+            <h6>Users</h6>
+        </div>
+        <div class="fe-box">
+            <h3>Live</h3>
+            <h6>Online Auctions</h6>
+        </div>
+        <div class="fe-box">
+            <h3>Find the Best Deals</h3>
+            <h6>Save Money</h6>
+        </div>
+        <div class="fe-box">
+            <h3>10K +</h3>
+            <h6>Promotions</h6>
+        </div>
+        <div class="fe-box">
+            <h3>WOW</h3>
+            <h6>Happy Sell</h6>
+        </div>
+        <div class="fe-box">
+            <h3>Thousand of Items</h3>
+            <h6>24/7 Auctions</h6>
+        </div>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>Featured Auctions</h2>
+        <p>Unleash your inner collector. Bid on extraordinary items and find the perfect pieces for your collection</p>
+        <div class="pro-container" id="featuredProduct">
+            <div class="pro" ng-repeat="item in ActiveAuctions">
+                <img src="{{item.item_image}}" alt="">
+                <div class="des">
+                    <span>{{item.item_name}}</span>
+                    <h5>{{item.item_description}}</h5>
+                    <!--<auction-timer auction="item"></auction-timer>-->
+                    {{associatedTimeRemaining.value}}
+                </div>
+                <a href="#"><i class="fa-solid fa-gavel fa-shake"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="banner" class="section-m1">
+        <h4>Why Us?</h4>
+        <h2>Experience the adrenaline rush of <span>Live Auctions</span> Bid in real-time and witness the excitement as
+            prices soar.</h2>
+        <button class="normal" onclick="window.location.href='shop.html'">Explore More</button>
+    </section>
+
+    <section id="product1" class="section-p1">
+        <h2>Browse by Categories</h2>
+        <p>Check Out All The Categories</p>
+        <div class="container">
+            <div class="slider-wrapper">
+                <button id="prev-slide" class="slide-button material-symbols-rounded"><i
+                        class="fa-solid fa-chevron-left"></i></button>
+                <ul class="image-list">
+                    <img class="image-item" src="assets/images/banner1.jpg" alt="">
+                    <img class="image-item" src="assets/images/banner1.jpg" alt="">
+                    <img class="image-item" src="assets/images/banner1.jpg" alt="">
+                    <img class="image-item" src="assets/images/banner1.jpg" alt="">
+                    <img class="image-item" src="assets/images/banner1.jpg" alt="">
+                    <img class="image-item" src="assets/images/banner1.jpg" alt="">
+                </ul>
+                <button id="next-slide" class="slide-button material-symbols-rounded"><i
+                        class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-scrollbar">
+                <div class="scrollbar-track">
+                    <div class="scrollbar-thumb"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="newsletter" class="section-p1 section-m1">
+        <div class="newstext">
+            <h4>Sign Up for Newsletter</h4>
+            <p>Get E-mail updates about our <span>latest auctions.</span></p>
+        </div>
+        <div class="form">
+            <input type="text" placeholder="Your Email Address">
+            <button class="normal">Sign Up</button>
+        </div>
+    </section>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="assets/logo.png" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address: </strong> 562 Wellington Road, Street 32, San Francisco</p>
+            <p><strong>Phone: </strong> +01 2222 365 / (+91) 01 2345 6789</p>
+            <p><strong>Hours: </strong> 10:00 - 18:00, Mon - Sat</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-pinterest-p"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <h4>About</h4>
+            <a href="about.html">About us</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+            <a href="contact.html">Contact us</a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="logi">Sign In</a>
+            <a href="cart.html">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="contact.html">Help</a>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2023, No copyright. It's all </p>
+        </div>
+    </footer>
+
+
+
+</body>
+
+</html>
