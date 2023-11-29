@@ -8,17 +8,17 @@
     <script src="https://kit.fontawesome.com/d72a8d384d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
-    <script src="app/shop.js"></script>   
+    <script src="app/doneAuctions.js"></script>   
 </head>
-<body ng-app="Shop" ng-controller="ShopCtrl">
+<body ng-app="DoneAuctions" ng-controller="DoneAuctionsCtrl">
     <section id="header">
         <a href="index.html"><img src="assets/logo.png" class="logo" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a  href="index.html">Home</a></li>
-                <li><a class="active" href="shop.html">Active Auctions</a></li>
-                <li><a href="completedAuctions.html">Auction Histories</a></li>
-                <li><a href="createListing.html">About</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Active Auctions</a></li>
+                <li><a class="active" href="completedAuctions.html">Auction Histories</a></li>
+                <li><a href="createListing.html">Create Listing</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
@@ -42,7 +42,7 @@
                 <div class="des">
                     <span>{{auction.item_name}}</span>
                     <h5>{{auction.item_description}}</h5>
-                    <h4>Active</h4>
+                    <h4>Deadline: Finished</h4>
                 </div>
                 <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
             </div>

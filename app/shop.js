@@ -1,12 +1,10 @@
-var app = angular.module("Index", []);
+var app = angular.module("Shop", []);
 
-app.controller("IndexCtrl", [
+app.controller("ShopCtrl", [
   "$scope",
   "$window",
   "$interval",
-  function ($scope, $window, $interval) {
-    let HttpResponse;
-    let records = [];
+  function ($scope, $interval) {
     $scope.ActiveAuctions = [];
     $scope.associatedTimeRemaining = new Map();
 
@@ -16,7 +14,7 @@ app.controller("IndexCtrl", [
         url: "http://localhost/api/services/AuctionServices.php?service=ActiveAuctions",
       }).then(function (response) {
         records = response.records;
-        console.log(records,"aa");
+        //console.log(records, "aa");
         return records;
       });
     };
@@ -31,7 +29,7 @@ app.controller("IndexCtrl", [
       return constructedImageUrl;
     };
 
-    let calculateTimeRemaining = function (end_time) {
+   /* let calculateTimeRemaining = function (end_time) {
       let intervalId = $interval(function () {
         const deadline = new Date(end_time).getTime();
         const now = new Date().getTime();
@@ -57,33 +55,15 @@ app.controller("IndexCtrl", [
           minutes: minutes,
           seconds: seconds,
         };
-        /*let existingRecord = {
-          auctionId: end_time,
-          timeRemaining: x,
-        };*/
+        
         let a = [];
         if ($scope.associatedTimeRemaining.get(end_time)) {
           $scope.associatedTimeRemaining.set(end_time, x);
-          //console.log(typeof($scope.associatedTimeRemaining));
-          console.log($scope.associatedTimeRemaining.get(end_time));
-          $scope.DaysLeft = $scope.associatedTimeRemaining.get(end_time).days;
-          $scope.HoursLeft = $scope.associatedTimeRemaining.get(end_time).hours;
-          $scope.Minutesleft = $scope.associatedTimeRemaining.get(end_time).minutes;
-          $scope.SecondsLeft = $scope.associatedTimeRemaining.get(end_time).seconds;
-
-          /*for (i = 0; i< $scope.associatedTimeRemaining.size;i++)
-          {
-            //a.push
-          }*/
         } else {
           $scope.associatedTimeRemaining.set(end_time, x);
-          //console.log($scope.associatedTimeRemaining);
         }
-
-        //$scope.associatedTimeRemaining.push(existingRecord);
-        //console.log($scope.associatedTimeRemaining);
       }, 1000);
-    };
+    };*/
 
     $scope.FetchActiveAuctions().then(function () {
       records.forEach((record) => {
@@ -91,9 +71,9 @@ app.controller("IndexCtrl", [
       });
 
       $scope.ActiveAuctions = records;
-      $scope.ActiveAuctions.forEach((item) => {
+      /*$scope.ActiveAuctions.forEach((item) => {
         let timeRemaining = calculateTimeRemaining(item.end_date);
-      });
+      });*/
       $scope.$applyAsync();
       console.log($scope.ActiveAuctions);
     });
@@ -104,35 +84,5 @@ app.controller("IndexCtrl", [
       url.searchParams.append("productId", ProductId);
       window.location.href = url;
     };
-
-    console.log($scope.associatedTimeRemaining);
   },
 ]);
-
-/*
-app.directive("auctionTimer", function () {
-  return {
-    restrict: "EA",
-    scope: {
-      auction: "=auction",
-      associatedTimeRemaining: '=associatedTimeRemaining'
-    },
-    link: function (scope, element) {
-      const timerData = associatedTimeRemaining[scope.auction.end_date];
-      const updateTimerDisplay = () => {
-        if (timerData) {
-          const timeLeft = timerData.timeRemaining;
-          element.text(
-            `${timeRemaining.day} days, ${timeRemaining.hours} hours, ${timeRemaining.minutes} minutes, ${timeRemaining.seconds} seconds`
-          );
-        } else {
-          element.text("Time remaining unavailable");
-        }
-      };
-      const timerIntervalId = $interval(updateTimerDisplay, 1000);
-      $scope.on ('$destroy', () => {
-        $interval.cancel(timerIntervalId);
-      })
-    },
-  };
-});*/

@@ -20,8 +20,8 @@
             <ul id="navbar">
                 <li><a class="active" href="index.html">Home</a></li>
                 <li><a href="shop.html">Active Auctions</a></li>
-                <li><a href="blog.html">Auction Histories</a></li>
-                <li><a href="about.html">Create Listing</a></li>
+                <li><a href="completedAuctions.html">Auction Histories</a></li>
+                <li><a href="createListing.html">Create Listing</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-gavel fa-shake"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
@@ -72,13 +72,14 @@
         <h2>Featured Auctions</h2>
         <p>Unleash your inner collector. Bid on extraordinary items and find the perfect pieces for your collection</p>
         <div class="pro-container" id="featuredProduct">
-            <div class="pro" ng-repeat="item in ActiveAuctions">
+            <div class="pro" ng-repeat="item in ActiveAuctions" ng-click="DirecttoProduct(item.auction_id)">
                 <img src="{{item.item_image}}" alt="">
                 <div class="des">
                     <span>{{item.item_name}}</span>
                     <h5>{{item.item_description}}</h5>
+                    <h4>Active</h4>
                     <!--<auction-timer auction="item"></auction-timer>-->
-                    {{associatedTimeRemaining.value}}
+                    
                 </div>
                 <a href="#"><i class="fa-solid fa-gavel fa-shake"></i></a>
             </div>
@@ -88,7 +89,7 @@
     <section id="banner" class="section-m1">
         <h4>Why Us?</h4>
         <h2>Experience the adrenaline rush of <span>Live Auctions</span> Bid in real-time and witness the excitement as
-            prices soar.</h2>
+            prices soar</h2>
         <button class="normal" onclick="window.location.href='shop.html'">Explore More</button>
     </section>
 

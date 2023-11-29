@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,19 +9,21 @@
     <script src="https://kit.fontawesome.com/d72a8d384d.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js"></script>
-    <script src="app/shop.js"></script>   
+    <script src="app/finishedItem.js"></script>
+    
 </head>
-<body ng-app="Shop" ng-controller="ShopCtrl">
+
+<body ng-app="fSingleItem" ng-controller="fSingleItemCtrl">
     <section id="header">
         <a href="index.html"><img src="assets/logo.png" class="logo" alt=""></a>
         <div>
             <ul id="navbar">
-                <li><a  href="index.html">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a class="active" href="shop.html">Active Auctions</a></li>
                 <li><a href="completedAuctions.html">Auction Histories</a></li>
-                <li><a href="createListing.html">About</a></li>
+                <li><a href="createListing.html">Create Listing</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li id="lg-bag"><a href="cart.html"><i class="fa-solid fa-gavel fa-shake"></i></a></li>
                 <a href="#" id="close"><i class="fa-solid fa-xmark"></i></a>
             </ul>
         </div>
@@ -30,29 +33,45 @@
         </div>
     </section>
 
-    <section id="page-header">
-        <h2>Discover a World of Treasures</h2>
-        <p>Embark on an exciting journey through our vast collection of active auctions</p>
-    </section>
-
-    <section id="product1" class="section-p1">
-        <div class="pro-container" id="products">
-            <div class="pro" ng-repeat="auction in ActiveAuctions" ng-click="DirecttoProduct(auction.auction_id)">
-                <img src="{{auction.item_image}}" alt="">
-                <div class="des">
-                    <span>{{auction.item_name}}</span>
-                    <h5>{{auction.item_description}}</h5>
-                    <h4>Active</h4>
-                </div>
-                <a href="#"><i class="fa-solid fa-bag-shopping cart"></i></a>
+    <section id="prodetails" class="section-p1">
+        <div class="single-pro-image">
+            <img src="{{AuctionDetail.item_image}}" width="100%" id="" alt="">
+        </div>
+        <div class="single-pro-details">
+            <div>
+                <h6>Home / {{AuctionDetail.item_name}}</h6>
+                <h4>{{AuctionDetail.item_name}}</h4>
+                <h2>Winning Bid</h2>
+                <h4>${{HighestBid}}</h4>
+                <h4>Total Bid Placed</h4>
+                <span>{{TotalBid}}</span>
+                <h4>Deadline</h4>
+                <span>Completed</span>
+                <h4>Product Details</h4>
+                <span>{{AuctionDetail.item_description}}</span>
             </div>
         </div>
     </section>
 
-    <section id="pagination" class="section-p1">
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#"><i class="fa-solid fa-arrow-right"></i></a>
+    
+    <section id="cart" class="section-p1">
+        <h2>Bid History</h2>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <td>Bidder Name</td>
+                    <td>Bid Amount</td>
+                    <td>Bid Placed at</td>
+                </tr>
+            </thead>
+            <tbody class="cartItems" ng-repeat="bidder in BidHistory">
+                <tr>
+                    <td>{{bidder.bidder_name}}</td>
+                    <td>${{bidder.bid_amount}}</td>
+                    <td>{{bidder.bid_timestamp}}</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
     <section id="newsletter" class="section-p1 section-m1">
@@ -103,10 +122,10 @@
             <a href="contact.html">Help</a>
         </div>
 
-
         <div class="copyright">
-            <p>&copy; 2023, No copyright. It's all </p>
+            <p>&copy; 2023, No copyright. It's all</p>
         </div>
-    </footer> 
+    </footer>
 </body>
+
 </html>
